@@ -1,1 +1,2 @@
-# OsorioCalculator - Copy
+# OsorioCalculator
+- a Simple Calculator
