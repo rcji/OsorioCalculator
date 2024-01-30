@@ -49,6 +49,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.equalsButton = new System.Windows.Forms.Button();
             this.operationLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox
@@ -193,6 +194,7 @@
             this.deleteButton.TabIndex = 11;
             this.deleteButton.Text = "<=";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // multiplyButton
             // 
@@ -216,6 +218,7 @@
             this.ceButton.TabIndex = 13;
             this.ceButton.Text = "CE";
             this.ceButton.UseVisualStyleBackColor = true;
+            this.ceButton.Click += new System.EventHandler(this.ceButton_Click);
             // 
             // subtractButton
             // 
@@ -239,6 +242,7 @@
             this.cButton.TabIndex = 15;
             this.cButton.Text = "C";
             this.cButton.UseVisualStyleBackColor = true;
+            this.cButton.Click += new System.EventHandler(this.cButton_Click);
             // 
             // zeroButton
             // 
@@ -300,12 +304,25 @@
             this.operationLabel.Text = "-";
             this.operationLabel.Click += new System.EventHandler(this.label1_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(12, 441);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 80);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "+/-";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(457, 529);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.operationLabel);
             this.Controls.Add(this.equalsButton);
             this.Controls.Add(this.addButton);
@@ -361,6 +378,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button equalsButton;
         private System.Windows.Forms.Label operationLabel;
+        private System.Windows.Forms.Button button1;
     }
 }
 

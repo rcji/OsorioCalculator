@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OsorioCalculator
 {
@@ -171,6 +172,36 @@ namespace OsorioCalculator
                 result = x / y;
 
             textBox.Text = result + "";
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string txt = textBox.Text;
+            if (txt.Length > 0)
+            {
+                txt = txt.Remove(txt.Length - 1);
+            }
+            textBox.Text = txt;
+        }
+
+        private void cButton_Click(object sender, EventArgs e)
+        {
+            textBox.Text = "0";
+        }
+
+        private void ceButton_Click(object sender, EventArgs e)
+        {
+            textBox.Text = "0";
+            operationLabel.Text = "-";
+            x = 0;
+            y = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            x = double.Parse(textBox.Text);
+            x *= -1;
+            textBox.Text = x.ToString();
         }
     }
 }
