@@ -26,6 +26,7 @@ namespace OsorioCalculator
         double result = 0;
         double x = 0;
         double y = 0;
+        double s = 0;
 
         private void sevenButton_Click(object sender, EventArgs e)
         {
@@ -199,9 +200,9 @@ namespace OsorioCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            x = double.Parse(textBox.Text);
-            x *= -1;
-            textBox.Text = x.ToString();
+            s = double.Parse(textBox.Text);
+            s *= -1;
+            textBox.Text = s.ToString();
         }
     }
 }
