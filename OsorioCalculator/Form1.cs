@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,8 @@ namespace OsorioCalculator
         double x = 0;
         double y = 0;
         double s = 0;
+        string opeSave = "-";
+        public bool pointCheck = false;
 
         private void sevenButton_Click(object sender, EventArgs e)
         {
@@ -120,11 +123,16 @@ namespace OsorioCalculator
 
         private void pointButton_Click(object sender, EventArgs e)
         {
-            if (textBox.Text == "0")
+            pointCheck = (textBox.Text).Contains(".");
+            if (!(pointCheck))
             {
-                textBox.Text = "";
+                if (textBox.Text == "0")
+                {
+                    textBox.Text = "";
+                }
+                textBox.Text += pointButton.Text;
             }
-            textBox.Text += pointButton.Text;
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -134,6 +142,25 @@ namespace OsorioCalculator
 
         private void divideButton_Click(object sender, EventArgs e)
         {
+            if (operationLabel.Text == "Division")
+            {
+                return;
+            }
+            opeSave = operationLabel.Text;
+            if (!(operationLabel.Text == "-"))
+            {
+                y = double.Parse(textBox.Text);
+                if (opeSave == "Addition")
+                    result = x + y;
+                if (opeSave == "Subtraction")
+                    result = x - y;
+                if (opeSave == "Multiplication")
+                    result = x * y;
+                if (opeSave == "Division")
+                    result = x / y;
+
+                textBox.Text = result + "";
+            }
             operationLabel.Text = "Division";
             x = double.Parse(textBox.Text);
             textBox.Text = "";
@@ -141,6 +168,26 @@ namespace OsorioCalculator
 
         private void multiplyButton_Click(object sender, EventArgs e)
         {
+            opeSave = operationLabel.Text;
+            if (!(operationLabel.Text == "-"))
+            {
+                if (operationLabel.Text == "Multiplication")
+                {
+                    return;
+                }
+    
+                y = double.Parse(textBox.Text);
+                if (opeSave == "Addition")
+                    result = x + y;
+                if (opeSave == "Subtraction")
+                    result = x - y;
+                if (opeSave == "Multiplication")
+                    result = x * y;
+                if (opeSave == "Division")
+                    result = x / y;
+
+                textBox.Text = result + "";
+            }
             operationLabel.Text = "Multiplication";
             x = double.Parse(textBox.Text);
             textBox.Text = "";
@@ -148,6 +195,25 @@ namespace OsorioCalculator
 
         private void subtractButton_Click(object sender, EventArgs e)
         {
+            opeSave = operationLabel.Text;
+            if (!(operationLabel.Text == "-"))
+            {
+                if (operationLabel.Text == "Subtraction")
+                {
+                    return;
+                }
+                y = double.Parse(textBox.Text);
+                if (opeSave == "Addition")
+                    result = x + y;
+                if (opeSave == "Subtraction")
+                    result = x - y;
+                if (opeSave == "Multiplication")
+                    result = x * y;
+                if (opeSave == "Division")
+                    result = x / y;
+
+                textBox.Text = result + "";
+            }
             operationLabel.Text = "Subtraction";
             x = double.Parse(textBox.Text);
             textBox.Text = "";
@@ -155,6 +221,26 @@ namespace OsorioCalculator
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            opeSave = operationLabel.Text;
+            if (!(operationLabel.Text == "-"))
+            {
+                if (operationLabel.Text == "Addition")
+                {
+                    return;
+                }
+                y = double.Parse(textBox.Text);
+                if (opeSave == "Addition")
+                    result = x + y;
+                if (opeSave == "Subtraction")
+                    result = x - y;
+                if (opeSave == "Multiplication")
+                    result = x * y;
+                if (opeSave == "Division")
+                    result = x / y;
+
+                textBox.Text = result + "";
+            }
+                
             operationLabel.Text = "Addition";
             x = double.Parse(textBox.Text);
             textBox.Text = "";
@@ -162,17 +248,21 @@ namespace OsorioCalculator
 
         private void equalsButton_Click(object sender, EventArgs e)
         {
-            y = double.Parse(textBox.Text);
-            if (operationLabel.Text == "Addition")
-                result = x + y;
-            if (operationLabel.Text == "Subtraction")
-                result = x - y;
-            if (operationLabel.Text == "Multiplication")
-                result = x * y;
-            if (operationLabel.Text == "Division")
-                result = x / y;
+            if (!(textBox.Text == ""))
+            {
+                y = double.Parse(textBox.Text);
+                if (operationLabel.Text == "Addition")
+                    result = x + y;
+                if (operationLabel.Text == "Subtraction")
+                    result = x - y;
+                if (operationLabel.Text == "Multiplication")
+                    result = x * y;
+                if (operationLabel.Text == "Division")
+                    result = x / y;
 
-            textBox.Text = result + "";
+                textBox.Text = result + "";
+            }
+           
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -204,5 +294,6 @@ namespace OsorioCalculator
             s *= -1;
             textBox.Text = s.ToString();
         }
+
     }
 }
